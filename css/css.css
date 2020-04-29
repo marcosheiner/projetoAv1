@@ -19,8 +19,9 @@ header{
 .nav-link{
     background-color: #f4a261;
     color: #f1faee!important;
-    margin: 5px;
-    border-radius: 5px;
+    
+    
+    
 }
 
 .btn-questoes{
@@ -47,4 +48,19 @@ p{
 .link-git:hover{
     color: white;
     text-decoration: none;
+}
+
+input.form-control{
+    border-radius: 0px;
+}
+
+.btn.btn-enviar{
+    background-color: #f4a261;
+    color: #f1faee;
+    border-radius: 0px;
+    margin-bottom: 2em;
+}
+
+.alert.alert-dark{
+    border-radius: 0px;
 }
