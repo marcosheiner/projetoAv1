@@ -41,4 +41,10 @@ p{
 
 }
 
-
+.link-git{
+    color: #f1faee;
+}
+.link-git:hover{
+    color: white;
+    text-decoration: none;
+}
