@@ -11,7 +11,7 @@
     <title>Marcos Heiner</title>
   </head>
   <body>
-
+    
 
     <header class="shadow">
         <h5 align="center" class="texto-barra">MÉDIA ARITMÉTICA<br><small>Questão 01</small></h5>
@@ -50,7 +50,7 @@
             <div class="col-sm">
                 <form name="mediaAritmetica" id="mediaAritmetica" method="POST">
                     <div class="form-group">
-                        <div class="alert alert-dark" role="alert">
+                        <div class="alert alert-success" role="alert">
                             <h4 class="alert-heading">Ei!</h4>
                             <p>Verifique todas as notas antes de gerar os resultados. Nosso sistema irá mostrar na tela sua situação de aprovado ou reprovado!</p>
                             
@@ -76,12 +76,12 @@
             <div class="col-sm">
                 <h5>Resultados <i class="fal fa-chart-bar"></i></h5>
                 <hr>
-                <div id="mostrarNome"></div>
-                <div id="mostrarDisciplina"></div>
+                <div id="mostrarNome"><p><strong>Nome do Aluno:</strong></p></div>
+                <div id="mostrarDisciplina"><p><strong>Nome da Disciplina:</strong></p></div>
                 <div id="mostrarNota1"></div>
                 <div id="mostrarNota2"></div>
                 <div id="notaGeral"></div>
-                <div id="mostrarSituacao"></div>
+                <div id="mostrarSituacao" style="margin-top: 1em;"></div>
             </div>
         </div>
     </div>
@@ -119,25 +119,25 @@
             const notaGeral = document.getElementById("notaGeral");
             const mostraSituacao = document.getElementById("mostrarSituacao");
 
-            alert(somaMedia);
+            
 
             if(somaMedia < 4) {
-              mostraNomeA.innerHTML = nomeAluno;
-              mostraNomeD.innerHTML = nomeDisciplina;
-              mostraSituacao.innerHTML = 'Reprovado';
+              mostraNomeA.innerHTML = '<p><strong>Nome do Aluno:</strong></p>' + nomeAluno;
+              mostraNomeD.innerHTML = '<p><strong>Nome da Disciplina: </strong></p>' + nomeDisciplina;
+              mostraSituacao.innerHTML = '<div class="alert alert-danger" role="alert">Você foi Reprovado!</div>';
               return notaGeral.innerHTML = somaMedia.toFixed(1);
             }
 
             if(somaMedia < 8) {
               mostraNomeA.innerHTML = nomeAluno;
               mostraNomeD.innerHTML = nomeDisciplina;
-              mostraSituacao.innerHTML = 'Recuperação';
+              mostraSituacao.innerHTML = '<div class="alert alert-warning" role="alert">Você esta de Recuperação!</div>';
               return notaGeral.innerHTML = somaMedia.toFixed(1);
             }
             
             mostraNomeA.innerHTML = nomeAluno;
             mostraNomeD.innerHTML = nomeDisciplina;
-            mostraSituacao.innerHTML = 'Aprovado';
+            mostraSituacao.innerHTML = '<div class="alert alert-success" role="alert">Você foi Aprovado!</div>';
             return notaGeral.innerHTML = somaMedia.toFixed(1);
 
         }
