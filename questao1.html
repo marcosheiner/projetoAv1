@@ -56,19 +56,20 @@
                             
                             
                         </div>
-                      <input type="text" class="form-control" id="nome" name="nome" placeholder="Seu Nome" required>
+                        <label>Seu Nome</label>
+                        <input type="text" class="form-control" id="nome" name="nome" placeholder="Seu Nome" required>
                     </div>
                     <div class="form-group">
-                      
-                      <input type="text" class="form-control" id="disciplina" name="disciplina" placeholder="Disciplina" required>
+                        <label>Nome da Disciplina</label>
+                        <input type="text" class="form-control" id="disciplina" name="disciplina" placeholder="Disciplina" required>
                     </div>
                     <div class="form-group">
-                      
-                      <input type="number" class="form-control" id="notaUm" name="notaUm" placeholder="Sua primeira nota" required>
+                        <label>Nota I</label>
+                        <input type="number" class="form-control" id="notaUm" name="notaUm" placeholder="Sua primeira nota" required>
                     </div>
                     <div class="form-group">
-                      
-                      <input type="number" class="form-control" id="notaDois" name="notaDois" placeholder="Sua segunda nota" required>
+                        <label>Nota 2</label>
+                        <input type="number" class="form-control" id="notaDois" name="notaDois" placeholder="Sua segunda nota" required>
                     </div>
                     <button type="submit" class="btn btn-enviar shadow" name="resultado">Resultado</button>
                   </form>
@@ -80,7 +81,7 @@
                 <div id="mostrarDisciplina"><p><strong>Nome da Disciplina:</strong></p></div>
                 <div id="mostrarNota1"></div>
                 <div id="mostrarNota2"></div>
-                <div id="notaGeral"></div>
+                <div id="notaGeral"><p><strong>Nota Geral:</strong></p></div>
                 <div id="mostrarSituacao" style="margin-top: 1em;"></div>
             </div>
         </div>
@@ -121,24 +122,24 @@
 
             
 
-            if(somaMedia < 4) {
+            if(somaMedia < 3) {
               mostraNomeA.innerHTML = '<p><strong>Nome do Aluno:</strong></p>' + nomeAluno;
               mostraNomeD.innerHTML = '<p><strong>Nome da Disciplina: </strong></p>' + nomeDisciplina;
-              mostraSituacao.innerHTML = '<div class="alert alert-danger" role="alert">Você foi Reprovado!</div>';
-              return notaGeral.innerHTML = somaMedia.toFixed(1);
+              mostraSituacao.innerHTML = '<div class="alert alert-danger shadow" role="alert">Você foi Reprovado!</div>';
+              return notaGeral.innerHTML = '<p><strong>Nota Geral: </strong></p>' + somaMedia.toFixed(1);
             }
 
-            if(somaMedia < 8) {
-              mostraNomeA.innerHTML = nomeAluno;
-              mostraNomeD.innerHTML = nomeDisciplina;
-              mostraSituacao.innerHTML = '<div class="alert alert-warning" role="alert">Você esta de Recuperação!</div>';
-              return notaGeral.innerHTML = somaMedia.toFixed(1);
+            if(somaMedia < 7) {
+              mostraNomeA.innerHTML = '<p><strong>Nome do Aluno:</strong></p>' + nomeAluno;
+              mostraNomeD.innerHTML = '<p><strong>Nome da Disciplina: </strong></p>' + nomeDisciplina;
+              mostraSituacao.innerHTML = '<div class="alert alert-warning shadow" role="alert">Você esta de Recuperação!</div>';
+              return notaGeral.innerHTML = '<p><strong>Nota Geral: </strong></p>' + somaMedia.toFixed(1);
             }
             
-            mostraNomeA.innerHTML = nomeAluno;
-            mostraNomeD.innerHTML = nomeDisciplina;
-            mostraSituacao.innerHTML = '<div class="alert alert-success" role="alert">Você foi Aprovado!</div>';
-            return notaGeral.innerHTML = somaMedia.toFixed(1);
+            mostraNomeA.innerHTML = '<p><strong>Nome do Aluno:</strong></p>' + nomeAluno;
+            mostraNomeD.innerHTML = '<p><strong>Nome da Disciplina: </strong></p>' + nomeDisciplina;
+            mostraSituacao.innerHTML = '<div class="alert alert-success shadow" role="alert">Você foi Aprovado!</div>';
+            return notaGeral.innerHTML = '<p><strong>Nota Geral: </strong></p>' + somaMedia.toFixed(1);
 
         }
 
