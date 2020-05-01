@@ -9,48 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <title>Marcos Heiner</title>
-    <script>
-        function contraCheque(){
-            const funcionario = myContraCheque.funcionario.value;
-            const cargo = myContraCheque.cargo.value;
-            const salario = myContraCheque.salario.value;
-
-            if (cargo == "Atendente"){
-                aumento = parseFloat(salario) * 0.08;
-                novoSalario = parseFloat(salario) + parseFloat(aumento);
-            }
-            else if (cargo == "Estoquista"){
-                aumento = parseFloat(salario) * 0.06;
-                novoSalario = parseFloat(salario) + parseFloat(aumento);
-            }
-            else{
-                aumento = parseFloat(salario) * 0.03;
-                novoSalario = parseFloat(salario) + parseFloat(aumento);
-            }
-
-            if (novoSalario <= 1045){
-                inss = parseFloat(novoSalario) * 0.075;
-                salLiquido = parseFloat(novoSalario) - parseFloat(inss);
-                
-            }
-            else if ((novoSalario > 1045) && (novoSalario <= 2089.60)){
-                inss = parseFloat(novoSalario) * 0.09;
-                salLiquido = parseFloat(novoSalario) - parseFloat(inss);
-            }
-
-            else if ((novoSalario > 2089.60) && (novoSalario <= 3134.40)){
-                inss = parseFloat(novoSalario) * 0.12;
-                salLiquido = parseFloat(novoSalario) - parseFloat(inss);
-            }
-
-            else {
-                inss = parseFloat(novoSalario) * 0.20;
-                salLiquido = parseFloat(novoSalario) - parseFloat(inss);
-                
-            }
-
-        }
-    </script>
+    
   </head>
   <body>
     
@@ -181,28 +140,72 @@
                             <div class="input-group-prepend">
                               <div class="input-group-text">R$</div>
                             </div>
-                            <input type="number" class="form-control" id="salario" name="salario" placeholder="Seu Salário" required>
-                          </div>
+                            <input type="text" class="form-control" id="salario" name="salario" placeholder="Seu Salário" required>
+                        </div>
                     </div>
                 </div>
-                <button onclick="contraCheque()" type="button" class="btn btn-enviar">GERAR CONTRA CHEQUE</button>
+                <button onclick="contracheque()" type="button" class="btn btn-enviar">GERAR CONTRA CHEQUE</button>
             </form>
 
             <small>SEU CONTRA CHEQUE <i class="fas fa-question-circle"></i></small>
             <div class="row" style="margin-bottom: 2em;">
                 <div class="col-8">
-                    <p id="nomeFuncionario"><strong>FUNCIONÁRIO:</strong></p>
-                    <p id="nomeCargo"><strong>CARGO:</strong></p>
-                    <p>—</p>
-                    <p id="valorSalario"><strong>SALÁRIO ATUAL:</strong></p>
-                    <p id="valorNovoSalario"><strong>NOVO SALÁRIO:</strong></p>
-                    <p id="descontoInss"><strong>DESCONTO INSS:</strong></p>
-                    <p>—</p>
-                    <p id="salarioLiquido"><strong>SALÁRIO LÍQUIDO:</strong></p>
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col"></th>
+                            <th scope="col">FUNCIONÁRIO</th>
+                            <th scope="col">CARGO</th>
+                            <th scope="col">—</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th scope="row"></th>
+                            <td id="nomeFuncionario">—</td>
+                            <td id="nomeCargo">—</td>
+                            <td>—</td>
+                          </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                              <th scope="col"></th>
+                              <th scope="col">SALÁRIO ATUAL</th>
+                              <th scope="col">NOVO SALÁRIO</th>
+                              <th scope="col">DESCONTO INSS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                              <th scope="row"></th>
+                              <td id="valorSalario">—</td>
+                              <td id="valorNovoSalario">—</td>
+                              <td id="descontoInss">—</td>
+                            </tr>
+                        </tbody>
+                          <thead>
+                            <tr>
+                              <th scope="col"></th>
+                              <th scope="col" id="">SALÁRIO LÍQUIDO</th>
+                              <th scope="col">—</th>
+                              <th scope="col">—</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                              <th scope="row"></th>
+                              <td id="salarioLiquido">—</td>
+                              <td>—</td>
+                              <td>—</td>
+                            </tr>
+                          </tbody>
+                    </table>
                 </div>
                 <div class="col-4"><p class="text-muted">IMPRIMIR CONTRA CHEQUE <i class="fas fa-print"></i></p></div>
             </div>
     </div>
+
+    
 
     <footer class="footer mt-auto py-3">
       <div class="container">
@@ -210,8 +213,64 @@
         <a href="https://github.com/marcosheiner/projetoAv1" class="link-git" target="_blank"><p class="text-center"><small>GitHub <i class="fab fa-github"></i></small></p></a>
       </div>
     </footer>
-   
 
+
+    <script>
+        function contracheque(){
+            funcionario    =  myContraCheque.funcionario.value;
+            cargo   =  myContraCheque.cargo.value;
+            salario =  myContraCheque.salario.value;
+
+
+        if (cargo == "Atendente") {
+            aumento  = (parseFloat(salario) * 0.08);
+            novoSalario  = (parseFloat(salario) + parseFloat(aumento));
+          
+        }
+        else if (cargo == "Estoquista") {
+            aumento = (parseFloat(salario) * 0.06);
+            novoSalario  = (parseFloat(salario) + parseFloat(aumento));
+          
+        } 
+        else if (cargo == "Gerente") {
+            aumento = (parseFloat(salario) * 0.03);
+            novoSalario  = (parseFloat(salario) + parseFloat(aumento));
+          
+        }
+        else {
+            aumento = "CARGO SEM AUMENTO NO MOMENTO.";
+        }
+
+
+        if (novoSalario <= 1045) {
+                inss  = (parseFloat(novoSalario) * 0.075);
+                sal_Liquido = parseFloat(novoSalario) - parseFloat(inss);
+          
+        }
+        else if ((novoSalario > 1045) && (novoSalario <= 2089.6)) {
+                inss  = (parseFloat(novoSalario) * 0.09);
+                sal_Liquido = parseFloat(novoSalario) - parseFloat(inss);
+          
+        }
+        else if ((novoSalario > 2089.6) && (novoSalario <= 3134.4)) {
+                inss  = (parseFloat(novoSalario) * 0.12);
+                sal_Liquido = parseFloat(novoSalario) - parseFloat(inss);
+          
+        }
+        else {
+                inss  = (parseFloat(novoSalario) * 0.14);
+                sal_Liquido = parseFloat(novoSalario) - parseFloat(inss);
+        }
+
+        document.getElementById("nomeFuncionario").innerHTML = funcionario.toUpperCase();
+        document.getElementById("nomeCargo").innerHTML = cargo.toUpperCase();
+        document.getElementById("valorSalario").innerHTML = 'R$ ' + salario;
+        document.getElementById("valorNovoSalario").innerHTML = 'R$ ' + novoSalario;
+        document.getElementById("descontoInss").innerHTML = 'R$ ' + inss.toFixed(2);
+        document.getElementById("salarioLiquido").innerHTML = 'R$ ' + sal_Liquido.toFixed(2);
+
+    }
+    </script>
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
