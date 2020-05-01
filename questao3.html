@@ -9,6 +9,48 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <title>Marcos Heiner</title>
+    <script>
+        function contraCheque(){
+            const funcionario = myContraCheque.funcionario.value;
+            const cargo = myContraCheque.cargo.value;
+            const salario = myContraCheque.salario.value;
+
+            if (cargo == "Atendente"){
+                aumento = parseFloat(salario) * 0.08;
+                novoSalario = parseFloat(salario) + parseFloat(aumento);
+            }
+            else if (cargo == "Estoquista"){
+                aumento = parseFloat(salario) * 0.06;
+                novoSalario = parseFloat(salario) + parseFloat(aumento);
+            }
+            else{
+                aumento = parseFloat(salario) * 0.03;
+                novoSalario = parseFloat(salario) + parseFloat(aumento);
+            }
+
+            if (novoSalario <= 1045){
+                inss = parseFloat(novoSalario) * 0.075;
+                salLiquido = parseFloat(novoSalario) - parseFloat(inss);
+                
+            }
+            else if ((novoSalario > 1045) && (novoSalario <= 2089.60)){
+                inss = parseFloat(novoSalario) * 0.09;
+                salLiquido = parseFloat(novoSalario) - parseFloat(inss);
+            }
+
+            else if ((novoSalario > 2089.60) && (novoSalario <= 3134.40)){
+                inss = parseFloat(novoSalario) * 0.12;
+                salLiquido = parseFloat(novoSalario) - parseFloat(inss);
+            }
+
+            else {
+                inss = parseFloat(novoSalario) * 0.20;
+                salLiquido = parseFloat(novoSalario) - parseFloat(inss);
+                
+            }
+
+        }
+    </script>
   </head>
   <body>
     
@@ -115,18 +157,18 @@
                 </table>
             </div>
         </div>
-            <form id="" name="" method="POST">
+            <form id="myContraCheque" name="myContraCheque" method="POST" action="">
                 <div class="form-row">
                     <div class="form-group col-md-12">
                         <label>Seu Nome</label>
-                        <input type="text" class="form-control" id="" name="" placeholder="Nome Completo">
+                        <input type="text" class="form-control" id="funcionario" name="funcionario" placeholder="Nome Completo" required>
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label>Cargo</label>
-                        <select class="form-control" id="" name="">
+                        <select class="form-control" id="cargo" name="cargo" required>
                             <option value="Atendente">Atendente</option>
                             <option value="Estoquista">Estoquista</option>
                             <option value="Gerente">Gerente</option>
@@ -139,26 +181,26 @@
                             <div class="input-group-prepend">
                               <div class="input-group-text">R$</div>
                             </div>
-                            <input type="number" class="form-control" id="" placeholder="Seu Salário">
+                            <input type="number" class="form-control" id="salario" name="salario" placeholder="Seu Salário" required>
                           </div>
                     </div>
                 </div>
-                <button onclick="" type="button" class="btn btn-enviar">GERAR CONTRA CHEQUE</button>
+                <button onclick="contraCheque()" type="button" class="btn btn-enviar">GERAR CONTRA CHEQUE</button>
             </form>
 
             <small>SEU CONTRA CHEQUE <i class="fas fa-question-circle"></i></small>
             <div class="row" style="margin-bottom: 2em;">
                 <div class="col-8">
-                    <p>FUNCIONÁRIO:</p>
-                    <p>CARGO:</p>
+                    <p id="nomeFuncionario"><strong>FUNCIONÁRIO:</strong></p>
+                    <p id="nomeCargo"><strong>CARGO:</strong></p>
                     <p>—</p>
-                    <p>SALÁRIO ATUAL:</p>
-                    <p>NOVO SALÁRIO:</p>
-                    <p>DESCONTO INSS:</p>
+                    <p id="valorSalario"><strong>SALÁRIO ATUAL:</strong></p>
+                    <p id="valorNovoSalario"><strong>NOVO SALÁRIO:</strong></p>
+                    <p id="descontoInss"><strong>DESCONTO INSS:</strong></p>
                     <p>—</p>
-                    <p>SALÁRIO LÍQUIDO:</p>
+                    <p id="salarioLiquido"><strong>SALÁRIO LÍQUIDO:</strong></p>
                 </div>
-                <div class="col-4"><p>IMPRIMIR CONTRA CHEQUE <i class="fas fa-print"></i></p></div>
+                <div class="col-4"><p class="text-muted">IMPRIMIR CONTRA CHEQUE <i class="fas fa-print"></i></p></div>
             </div>
     </div>
 
