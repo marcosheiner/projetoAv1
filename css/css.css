@@ -53,6 +53,9 @@ p{
 input.form-control{
     border-radius: 0px;
 }
+select.form-control{
+    border-radius: 0px;
+}
 
 .btn.btn-enviar{
     background-color: #c81d25;
