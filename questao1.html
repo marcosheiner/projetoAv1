@@ -36,6 +36,7 @@
                             <a class="dropdown-item" href="#">QUESTÃO 1</a>
                             <a class="dropdown-item" href="#">QUESTÃO 2</a>
                             <a class="dropdown-item" href="#">QUESTÃO 3</a>
+                            <a class="dropdown-item" href="#">QUESTÃO 4</a>
                         </div>
                     </li>
                 </ul>
@@ -50,7 +51,7 @@
             <div class="col-sm">
                 <form name="mediaAritmetica" id="mediaAritmetica" method="POST">
                     <div class="form-group">
-                        <div class="alert alert-success" role="alert">
+                        <div class="alert alert-danger" role="alert">
                             <h4 class="alert-heading">Ei!</h4>
                             <p>Verifique todas as notas antes de gerar os resultados. Nosso sistema irá mostrar na tela sua situação de aprovado ou reprovado!</p>
                             
@@ -126,7 +127,7 @@
               mostraNomeA.innerHTML = '<p><strong>Nome do Aluno:</strong></p>' + nomeAluno;
               mostraNomeD.innerHTML = '<p><strong>Nome da Disciplina: </strong></p>' + nomeDisciplina;
               mostraNotaUm.innerHTML = '<p><strong>Suas Notas:</strong></p>' + primeiraNota + '<br>' + segundaNota;
-              mostraSituacao.innerHTML = '<div class="alert alert-danger shadow" role="alert">Você foi Reprovado!</div>';
+              mostraSituacao.innerHTML = '<div class="alert alert-danger" role="alert">Você foi Reprovado!</div>';
               return notaGeral.innerHTML = '<p><strong>Nota Geral: </strong></p>' + somaMedia.toFixed(1);
             }
 
@@ -134,14 +135,14 @@
               mostraNomeA.innerHTML = '<p><strong>Nome do Aluno:</strong></p>' + nomeAluno;
               mostraNomeD.innerHTML = '<p><strong>Nome da Disciplina: </strong></p>' + nomeDisciplina;
               mostraNotaUm.innerHTML = '<p><strong>Suas Notas:</strong></p>' + primeiraNota + '<br>' + segundaNota;
-              mostraSituacao.innerHTML = '<div class="alert alert-warning shadow" role="alert">Você esta de Recuperação!</div>';
+              mostraSituacao.innerHTML = '<div class="alert alert-warning" role="alert">Você esta de Recuperação!</div>';
               return notaGeral.innerHTML = '<p><strong>Nota Geral: </strong></p>' + somaMedia.toFixed(1);
             }
             
             mostraNomeA.innerHTML = '<p><strong>Nome do Aluno:</strong></p>' + nomeAluno;
             mostraNomeD.innerHTML = '<p><strong>Nome da Disciplina: </strong></p>' + nomeDisciplina;
             mostraNotaUm.innerHTML = '<p><strong>Suas Notas:</strong></p>' + primeiraNota + '<br>' + segundaNota;
-            mostraSituacao.innerHTML = '<div class="alert alert-success shadow" role="alert">Você foi Aprovado!</div>';
+            mostraSituacao.innerHTML = '<div class="alert alert-success" role="alert">Você foi Aprovado!</div>';
             return notaGeral.innerHTML = '<p><strong>Nota Geral: </strong></p>' + somaMedia.toFixed(1);
 
         }
