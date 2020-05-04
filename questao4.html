@@ -9,7 +9,50 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <title>Marcos Heiner</title>
-    
+    <script>
+      function calcularImc(){
+        nome   = form_imc.nomePaciente.value;
+        peso   = form_imc.peso.value;
+        altura = form_imc.altura.value;
+
+        imc = peso / (altura * altura);
+        
+        if (imc < 18,5){
+          nivel     = "Baixo Peso";
+          problema  = "Peso baixo para a altura. Maior probabilidade de anorexia.";
+        }
+        else if ((imc > 18,5) && (imc <= 24,9)){
+          nivel     = "Peso Normal";
+          problema  = "Maior probabilidade de ser um indivíduo saudável.";
+        }
+        else if ((imc > 25) && (imc <= 29,9)){
+          nivel     = "Pré-Obesidade";
+          problema  = "Alguma probabilidade de problemas de saúde. Predisposição a tornar-se obeso.";
+        }
+        else if ((imc > 30) && (imc <= 34,9)){
+          nivel     = "Obesidade Grau 1";
+          problema  = "Risco Moderado de diabetes tipo 2, hipertensão, colesterol, cardiopatia.";
+        }
+        else if ((imc > 35) && (imc <= 39,9)){
+          nivel     = "Obesidade Grau 2";
+          problema  = "Risco Grave. Aumenta o risco das doenças associadas. O risco de mortalidade aumenta 50%.";
+        }
+        else {
+          nivel     = "Obesidade Mórbita"; 
+          problema  = "Risco Muito Grave. O ricso de doenças associadas assim como a mortalidade aumenta 90%.";
+        }
+
+
+        document.getElementById("nomeP").innerHTML = nome;
+        document.getElementById("pesoP").innerHTML = peso;
+        document.getElementById("alturaP").innerHTML = altura;
+
+        document.getElementById("imcP").innerHTML = imc.toFixed(2);
+        //document.getElementById("seuNivel").innerHTML = nivel;
+        //document.getElementById("situacao").innerHTML = problema;
+
+      }
+    </script>
   </head>
   <body>
     
@@ -30,7 +73,7 @@
                         <a class="nav-link" href="index.html"><i class="fal fa-home"></i></a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle btn-questoes shadow href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle btn-questoes shadow" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             MINHAS QUESTÕES
                         </a>
                         <div class="dropdown-menu shadow" aria-labelledby="navbarDropdownMenuLink">
@@ -45,6 +88,39 @@
         </div>
     </nav>
 
+    <div class="container">
+
+      <form id="form_imc" name="form_imc" method="POST" action="">
+        <div class="row">
+          <div class="col-sm">
+            <labe>Nome Completo</labe>
+            <input type="text" class="form-control" id="nomePaciente" name="nomePaciente" placeholder="Seu Nome" required>
+
+            <labe>Seu Peso</labe>
+            <input type="number" class="form-control" id="peso" name="peso" placeholder="Seu Peso" required>
+
+            <labe>Sua Altura</labe>
+            <input type="number" class="form-control" id="altura" name="altura" placeholder="Sua Altura" required>
+            <br>
+          </div>
+  
+        </div>
+
+        <button onclick="calcularImc()" type="button" class="btn btn-enviar">CALCULAR</button>
+      </form>
+
+      <div>
+        <h5>Resultado:</h5>
+        <p id="nomeP">Nome:</p>
+        <p id="pesoP">Seu Peso:</p>
+        <p id="alturaP">Sua Altura:</p>
+        <p>—</p>
+        <p id="imcP">Seu IMC:</p>
+        <p id="seuNivel">Sei Nível:</p>
+        <p id="situacao">Problema:</p>
+      </div>
+
+    </div>
 
     
 
@@ -58,6 +134,7 @@
     </footer>
 
 
+    
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
