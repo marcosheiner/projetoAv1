@@ -10,46 +10,61 @@
 
     <title>Marcos Heiner</title>
     <script>
-      function calcularImc(){
-        nome   = form_imc.nomePaciente.value;
-        peso   = form_imc.peso.value;
-        altura = form_imc.altura.value;
+      function handleCalcularImc() {
+        const nome   = form_imc.nomePaciente.value;
+        const peso   = form_imc.peso.value;
+        const altura = form_imc.altura.value;
 
-        imc = peso / (altura * altura);
-        
-        if (imc < 18,5){
-          nivel     = "Baixo Peso";
-          problema  = "Peso baixo para a altura. Maior probabilidade de anorexia.";
-        }
-        else if ((imc > 18,5) && (imc <= 24,9)){
-          nivel     = "Peso Normal";
-          problema  = "Maior probabilidade de ser um indivíduo saudável.";
-        }
-        else if ((imc > 25) && (imc <= 29,9)){
-          nivel     = "Pré-Obesidade";
-          problema  = "Alguma probabilidade de problemas de saúde. Predisposição a tornar-se obeso.";
-        }
-        else if ((imc > 30) && (imc <= 34,9)){
-          nivel     = "Obesidade Grau 1";
-          problema  = "Risco Moderado de diabetes tipo 2, hipertensão, colesterol, cardiopatia.";
-        }
-        else if ((imc > 35) && (imc <= 39,9)){
-          nivel     = "Obesidade Grau 2";
-          problema  = "Risco Grave. Aumenta o risco das doenças associadas. O risco de mortalidade aumenta 50%.";
-        }
-        else {
-          nivel     = "Obesidade Mórbita"; 
-          problema  = "Risco Muito Grave. O ricso de doenças associadas assim como a mortalidade aumenta 90%.";
-        }
-
+        const params = calcularImc(peso, altura);
+        console.log(params);
 
         document.getElementById("nomeP").innerHTML = nome;
         document.getElementById("pesoP").innerHTML = peso;
         document.getElementById("alturaP").innerHTML = altura;
 
-        document.getElementById("imcP").innerHTML = imc.toFixed(2);
-        //document.getElementById("seuNivel").innerHTML = nivel;
-        //document.getElementById("situacao").innerHTML = problema;
+        document.getElementById("imcP").innerHTML = params.imc.toFixed(2);
+        document.getElementById("seuNivel").innerHTML = params.nivel;
+        document.getElementById("situacao").innerHTML = params.problema;
+
+        return;
+      }
+
+      function calcularImc(peso, altura){
+        const imc = peso / (altura * altura);
+        
+        if (imc < 18.5) return { 
+          imc,
+          nivel: "Baixo Peso",
+          problema: "Peso baixo para a altura. Maior probabilidade de anorexia."
+        };
+
+        if (imc < 24.9) return {
+          imc,
+          nivel: "Peso Normal",
+          problema: "Maior probabilidade de ser um indivíduo saudável."
+        };
+
+        if (imc < 29.9) return {
+          imc,
+          nivel: "Pré-Obesidade",
+          problema: "Alguma probabilidade de problemas de saúde. Predisposição a tornar-se obeso."
+        };
+
+        if (imc < 34.9) return {
+          imc,
+          nivel: "Obesidade Grau 1",
+          problema: "Risco Moderado de diabetes tipo 2, hipertensão, colesterol, cardiopatia."
+        };
+
+        if (imc < 39.9) return {
+          nivel: "Obesidade Grau 2",
+          problema: "Risco Grave. Aumenta o risco das doenças associadas. O risco de mortalidade aumenta 50%."
+        };
+        
+        return {
+          nivel: "Obesidade Mórbita",
+          problema: "Risco Muito Grave. O ricso de doenças associadas assim como a mortalidade aumenta 90%."
+        };
 
       }
     </script>
@@ -106,7 +121,7 @@
   
         </div>
 
-        <button onclick="calcularImc()" type="button" class="btn btn-enviar">CALCULAR</button>
+        <button onclick="handleCalcularImc()" type="button" class="btn btn-enviar">CALCULAR</button>
       </form>
 
       <div>
@@ -116,7 +131,7 @@
         <p id="alturaP">Sua Altura:</p>
         <p>—</p>
         <p id="imcP">Seu IMC:</p>
-        <p id="seuNivel">Sei Nível:</p>
+        <p id="seuNivel">Seu Nível:</p>
         <p id="situacao">Problema:</p>
       </div>
 
