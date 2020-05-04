@@ -105,6 +105,10 @@
 
     <div class="container">
 
+      <div class="alert alert-danger" role="alert">
+        Atenção! Não usar "," nos campos de <b>peso</b> e <b>altura</b>!
+      </div>
+
       <form id="form_imc" name="form_imc" method="POST" action="">
         <div class="row">
           <div class="col-sm">
@@ -126,16 +130,45 @@
 
       <div>
         <h5>Resultado:</h5>
-        <p id="nomeP">Nome:</p>
-        <p id="pesoP">Seu Peso:</p>
-        <p id="alturaP">Sua Altura:</p>
-        <p>—</p>
-        <p id="imcP">Seu IMC:</p>
-        <p id="seuNivel">Seu Nível:</p>
-        <p id="situacao">Problema:</p>
+        
       </div>
 
     </div>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">NOME</th>
+          <th scope="col">PESO</th>
+          <th scope="col">ALTURA</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row"></th>
+          <td id="nomeP">-</td>
+          <td id="pesoP">-</td>
+          <td id="alturaP">-</td>
+        </tr>
+      </tbody>
+      <thead>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">NÍVEL</th>
+          <th scope="col">IMC</th>
+          <th scope="col">PROBLEMAS</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row"></th>
+          <td id="seuNivel">-</td>
+          <td id="imcP">-</td>
+          <td id="situacao">-</td>
+        </tr>
+      </tbody>
+    </table>
 
     
 
